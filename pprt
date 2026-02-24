@@ -1186,7 +1186,7 @@ end)
 
 -- ============================================================
 -- TAB 2 - PING FARM
--- (valores do anonymous: waitTime = 0.00092, batch = 100, batchWait = 0.005)
+-- (valores do anonymous: waitTime = 0.00065, batch = 100, batchWait = 0.005)
 -- Inclui lógica de Farm Paused / Farm Returned igual ao anonymous
 -- ============================================================
 
@@ -1205,8 +1205,8 @@ coroutine.wrap(function()
             end
         end
         _G.totalWeightsPing = totalWeights
-        -- valor exato do anonymous: 0.00092
-        WaitTime_2.Text = "Wait Time: " .. tostring(0.00092 * totalWeights)
+        -- valor exato do anonymous: 0.00065
+        WaitTime_2.Text = "Wait Time: " .. tostring(0.00065 * totalWeights)
         wait(1)
     end
 end)()
@@ -1245,8 +1245,8 @@ local function RunPingFarmLoop()
                 pcall(function()
                     _G.farmer2 = true
                     while _G.farmer2 do
-                        -- checkInterval do anonymous: 0.00092 * totalWeights
-                        local farmWaitTime = 0.00092 * (_G.totalWeightsPing or 0)
+                        -- checkInterval do anonymous: 0.00065 * totalWeights
+                        local farmWaitTime = 0.00065 * (_G.totalWeightsPing or 0)
                         local tools = LocalPlayer.Character and LocalPlayer.Character:GetChildren() or {}
                         local batchCount = 0
                         for _, tool in pairs(tools) do
@@ -1278,9 +1278,9 @@ local function RunPingFarmLoop()
     StartFarming2()
 
     -- Loop de controle de ping — igual ao anonymous
-    -- checkInterval usa 0.00092 * totalWeightsPing, lido dinamicamente
+    -- checkInterval usa 0.00065 * totalWeightsPing, lido dinamicamente
     while _G.pingFarmLoop do
-        local checkInterval = 0.00092 * (_G.totalWeightsPing or 0)
+        local checkInterval = 0.00065 * (_G.totalWeightsPing or 0)
         local ok, currentPing = pcall(function()
             return StatsService.Network.ServerStatsItem['Data Ping']:GetValue()
         end)
